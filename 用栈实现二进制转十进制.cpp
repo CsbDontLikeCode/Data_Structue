@@ -1,15 +1,15 @@
 /*
-	ÓÃÕ»ÊµÏÖ¶ş½øÖÆ×ªÊ®½øÖÆ
+	ç”¨æ ˆå®ç°äºŒè¿›åˆ¶è½¬åè¿›åˆ¶
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
-#define Stark_Init_Size 100//Õ»µÄ³õÊ¼´óĞ¡
-#define StarkIncrement  10//µ±Õ»¿Õ¼ä²»×ãÊ±Ã¿´Î×·¼ÓµÄ´óĞ¡
+#define Stark_Init_Size 100//æ ˆçš„åˆå§‹å¤§å°
+#define StarkIncrement  10//å½“æ ˆç©ºé—´ä¸è¶³æ—¶æ¯æ¬¡è¿½åŠ çš„å¤§å°
 
-typedef char ElemType;//Õ»ÔªËØÀàĞÍÃû
+typedef char ElemType;//æ ˆå…ƒç´ ç±»å‹å
 
 typedef struct {
 	ElemType* top;
@@ -17,18 +17,18 @@ typedef struct {
 	int StarkSize;
 }SqStark;
 
-/* ¡ı¹¹ÔìÒ»¸ö¿ÕÕ»¡ı */
+/* â†“æ„é€ ä¸€ä¸ªç©ºæ ˆâ†“ */
 void InitStark(SqStark* S) {
 	S->base = (ElemType*)malloc(Stark_Init_Size * sizeof(ElemType));
-	if (!S->base) exit(0);//·ÖÅä¿Õ¼äÊ§°Ü£¬ÍË³ö
+	if (!S->base) exit(0);//åˆ†é…ç©ºé—´å¤±è´¥ï¼Œé€€å‡º
 	S->top = S->base;
 	S->StarkSize = Stark_Init_Size;
 }
 
 
-/* ¡ı²åÈëÔªËØeÎªĞÂµÄÕ»¶¥ÔªËØ¡ı */
+/* â†“æ’å…¥å…ƒç´ eä¸ºæ–°çš„æ ˆé¡¶å…ƒç´ â†“ */
 void Push(SqStark* S, ElemType e) {
-	if (S->top - S->base >= S->StarkSize) {//Õ»¿Õ¼ä²»×ã£¬×·¼Ó¿Õ¼ä
+	if (S->top - S->base >= S->StarkSize) {//æ ˆç©ºé—´ä¸è¶³ï¼Œè¿½åŠ ç©ºé—´
 		S->base = (ElemType*)realloc(S->base, (S->StarkSize + StarkIncrement) * sizeof(ElemType));
 		if (!S->base) exit(1);
 		S->top = S->base + S->StarkSize;
@@ -37,15 +37,15 @@ void Push(SqStark* S, ElemType e) {
 	*S->top++ = e;
 }
 
-/* ¡ı»ñÈ¡Õ»¶¥ÔªËØ²¢´òÓ¡¡ı */
+/* â†“è·å–æ ˆé¡¶å…ƒç´ å¹¶æ‰“å°â†“ */
 void GetTop(SqStark S) {
 	if (S.top == S.base) {
 		exit(1);
 	}
-	printf("\nÕ»¶¥ÔªËØÎª%d", *(--S.top));
+	printf("\næ ˆé¡¶å…ƒç´ ä¸º%d", *(--S.top));
 }
 
-/* ¡ıÈôÕ»²»Îª¿Õ£¬ÔòÉ¾³ıÕ»¶¥ÔªËØ£¬²¢½«É¾³ıµÄÕ»¶¥ÔªËØ¸³Öµ¸øe¡ı */
+/* â†“è‹¥æ ˆä¸ä¸ºç©ºï¼Œåˆ™åˆ é™¤æ ˆé¡¶å…ƒç´ ï¼Œå¹¶å°†åˆ é™¤çš„æ ˆé¡¶å…ƒç´ èµ‹å€¼ç»™eâ†“ */
 int Pop(SqStark* S) {
 	if (S->top == S->base) {
 		exit(1);
@@ -53,12 +53,12 @@ int Pop(SqStark* S) {
 	return *(--S->top);
 }
 
-/* ¡ı°ÑÕ»ÉèÖÃÎª¿ÕÕ»¡ı */
+/* â†“æŠŠæ ˆè®¾ç½®ä¸ºç©ºæ ˆâ†“ */
 void ClearStark(SqStark* S) {
 	S->top = S->base;
 }
 
-/* ¡ı¼ÆËãµ±Ç°Õ»µÄÈİÁ¿¡ı */
+/* â†“è®¡ç®—å½“å‰æ ˆçš„å®¹é‡â†“ */
 int StarkLen(SqStark S) {
 	return S.top - S.base;
 }
@@ -70,7 +70,7 @@ int main() {
 	int len, i, sum = 0;
 
 	InitStark(&S);
-	printf("ÇëÊäÈë¶ş½øÖÆÊı£¬ÊäÈë#·ûºÅ½áÊø£¡\n");
+	printf("è¯·è¾“å…¥äºŒè¿›åˆ¶æ•°ï¼Œè¾“å…¥#ç¬¦å·ç»“æŸï¼\n");
 	scanf_s("%c", &c);
 	while (c != '#') {
 		Push(&S, c);
@@ -80,14 +80,14 @@ int main() {
 	getchar();
 
 	len = StarkLen(S);
-	printf("Õ»µÄµ±Ç°ÈİÁ¿ÊÇ£º%d\n", len);
+	printf("æ ˆçš„å½“å‰å®¹é‡æ˜¯ï¼š%d\n", len);
 
 	for (i = 0; i < len; i++) {
 		c = Pop(&S);
 		sum = sum + (c - 48) * pow(2, i);
 	}
 
-	printf("×ª»¯ÎªÊ®½øÖÆÊıÎª£º%d", sum);
+	printf("è½¬åŒ–ä¸ºåè¿›åˆ¶æ•°ä¸ºï¼š%d", sum);
 
 	return 0;
 }
