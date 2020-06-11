@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*é€’å½’å‡½æ•°*/
 long int Fib(long int i) {
 	if (i <= 2) {
 		return i == 0 ? 0 : 1;
@@ -11,10 +12,10 @@ long int Fib(long int i) {
 int main(void) {
 	long int loc,num;
 
-	printf("ÊäÈëÊýÁÐÐòºÅ£º");
+	printf("è¾“å…¥æ•°åˆ—åºå·ï¼š");
 	scanf_s("%d", &loc);
 	num = Fib(loc);
-	printf("¶ÔÓ¦Î»ÖÃÔªËØÎª%d", num);
+	printf("å¯¹åº”ä½ç½®å…ƒç´ ä¸º%d", num);
 
 	return 0;
 }
